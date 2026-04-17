@@ -1,27 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Caza Estrellas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caza Estrellas - Limones</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="limones.css">
   <script src="utils.js"></script>
- 
 </head>
-<body onload="iniciar()">
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: Brayan Moran</h2>
-    <canvas id="areaJuego" width="600" height="400"></canvas>
-    <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
-    </div>
-    <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha()">Derecha</button>
-      <button onclick="reiniciar()">Reiniciar</button>
+<body onload="iniciar()" class="d-flex justify-content-center align-items-center min-vh-100">
+
+  <div class="container d-flex justify-content-center">
+    <div class="game-card card shadow-lg p-4 text-center text-white">
+      
+      <div class="mb-3">
+        <h1 class="game-title display-5 mb-1">🍋 Atrapar Limones 🍋</h1>
+        <p class="text-muted mb-0">Si del cielo te caen limones...</p>
+        <small class="text-info font-monospace">Dev: Brayan Moran</small>
+      </div>
+
+      <div class="d-flex justify-content-center gap-4 mb-3">
+        <div class="stat-badge px-4 py-2 rounded-pill">
+          <span class="fw-bold">Puntaje:</span> 
+          <span id="txtPuntaje" class="fs-4 text-warning">0</span>
+        </div>
+        <div class="stat-badge px-4 py-2 rounded-pill">
+          <span class="fw-bold">Vidas:</span> 
+          <span id="txtVidas" class="fs-4 text-danger">3</span>
+        </div>
+      </div>
+
+      <div class="canvas-container mb-4">
+        <canvas id="areaJuego" width="600" height="400" class="rounded-3 shadow"></canvas>
+      </div>
+
+      <div class="botones d-flex justify-content-center gap-3">
+        <button onclick="moverIzquierda()" class="btn btn-outline-info btn-lg fw-bold px-4">
+          ◄ Izquierda
+        </button>
+        <button onclick="moverDerecha()" class="btn btn-outline-info btn-lg fw-bold px-4">
+          Derecha ►
+        </button>
+        <button onclick="reiniciar()" class="btn btn-warning btn-lg fw-bold px-4 ms-3 text-dark shadow-sm">
+          ↻ Reiniciar
+        </button>
+      </div>
+
     </div>
   </div>
+
   <script src="limones.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -87,17 +87,37 @@ function detectarAtrapado(){
     }
 
     if (puntaje == 3) {
-            velocidadCaida = 150;
-            clearInterval(intervalo);
-            intervalo = setInterval(bajarLimon, velocidadCaida);
-        } else if (puntaje == 6) {
-            velocidadCaida = 100;
-            clearInterval(intervalo);
-            intervalo = setInterval(bajarLimon, velocidadCaida);
-        } else if (puntaje == 10) {
-            alert("GANASTE");
-            clearInterval(intervalo);
-        }
+        velocidadCaida = 150;
+        clearInterval(intervalo);
+        intervalo = setInterval(bajarLimon, velocidadCaida);
+    } else if (puntaje == 6) {
+        velocidadCaida = 100;
+        clearInterval(intervalo);
+        intervalo = setInterval(bajarLimon, velocidadCaida);
+    } else if (puntaje == 10) {
+        clearInterval(intervalo);
+        // NUEVA ALERTA DE VICTORIA CON SWEETALERT2
+        Swal.fire({
+            title: '¡VICTORIA!',
+            html: `¡Has atrapado <b style="color: #38bdf8; font-size: 1.5em;">10</b> limones y completado el juego!`,
+            icon: 'success',
+            background: '#111827', 
+            color: '#ffffff', 
+            confirmButtonColor: '#fde047', 
+            confirmButtonText: '<span style="color: #000; font-weight: bold; padding: 0 20px;">↻ VOLVER A JUGAR</span>',
+            allowOutsideClick: false,
+            backdrop: `
+                rgba(0,0,0,0.8)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat
+            `
+        }).then((result) => {
+            if (result.isConfirmed) {
+                reiniciar(); 
+            }
+        });
+    }
 }
 
 function detectarPiso(){
@@ -107,8 +127,28 @@ function detectarPiso(){
         mostrarSpan("txtVidas",vidas);
     }
     if (vidas == 0) {
-        alert("GAME OVER");
         clearInterval(intervalo);
+        Swal.fire({
+            title: '¡JUEGO TERMINADO!',
+            html: `Has atrapado <b style="color: #38bdf8; font-size: 1.5em;">${puntaje}</b> limones. <br> ¿Listo para otra ronda?`,
+            icon: 'warning',
+            background: '#111827', // Color de fondo de tu tarjeta
+            color: '#ffffff', // Texto blanco
+            confirmButtonColor: '#fde047', // Botón amarillo neón
+            confirmButtonText: '<span style="color: #000; font-weight: bold; padding: 0 20px;">↻ REINICIAR JUEGO</span>',
+            allowOutsideClick: false, // Evita que se cierre si dan clic afuera
+            backdrop: `
+                rgba(0,0,0,0.8)
+                url("https://sweetalert2.github.io/images/nyan-cat.gif") 
+                left top
+                no-repeat
+            `
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Aquí llamas a tu función que reinicia las variables del juego
+                reiniciar(); 
+            }
+        });
     }
 }
 

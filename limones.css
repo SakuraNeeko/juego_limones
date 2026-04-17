@@ -1,31 +1,92 @@
+/* Variables de color para mantener consistencia */
+:root {
+  --bg-darker: #0b0f19;
+  --card-bg: #111827;
+  --neon-cyan: #38bdf8;
+  --neon-yellow: #fde047;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg-darker);
+  /* Un sutil patrón de fondo de cuadrícula para darle onda tecnológica/arcade */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
-.contenedor {
-  max-width: 800px;
-  margin: 0 auto;
+/* Tipografía especial para el título */
+.game-title {
+  font-family: 'Righteous', cursive;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 10px rgba(253, 224, 71, 0.3);
+  letter-spacing: 1px;
 }
 
+/* Estilo de la tarjeta que contiene el juego */
+.game-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Estilo de las insignias de puntaje */
+.stat-badge {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.1rem;
+}
+
+/* El Canvas (La pantalla de juego) */
 canvas {
-  background-color: #111827;
-  border: 3px solid #38bdf8;
+  background-color: #0f172a; /* Fondo más oscuro para contraste con los elementos del juego */
+  border: 3px solid var(--neon-cyan);
   display: block;
-  margin: 20px auto;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); /* Resplandor cyan */
+  transition: box-shadow 0.3s ease;
 }
 
-.panel {
-  margin: 20px 0;
+canvas:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
 }
 
+/* Mejoras a los botones de Bootstrap */
 .botones button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 16px;
-  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-outline-info:hover {
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  background-color: var(--neon-yellow);
+  border-color: var(--neon-yellow);
+}
+
+.btn-warning:hover {
+  box-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* --- ESTILOS PARA SWEETALERT2 --- */
+.swal2-popup {
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.2) !important;
+  border-radius: 15px !important;
+}
+
+.swal2-title {
+  font-family: 'Righteous', cursive !important;
+  color: var(--neon-yellow) !important;
+  text-shadow: 0 0 5px rgba(253, 224, 71, 0.3);
 }
