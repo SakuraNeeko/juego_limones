@@ -22,6 +22,16 @@ function iniciar(){
     aparecerLimon();
 }
 
+function reiniciar() {
+    clearInterval(intervalo); 
+    velocidadCaida = 200;  
+    vidas = 3;
+    puntaje = 0;
+    mostrarSpan("txtVidas", vidas);
+    mostrarSpan("txtPuntaje", puntaje);
+    iniciar();
+}
+
 function dibujarSuelo(){
     ctx.fillStyle="blue";
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
@@ -77,13 +87,17 @@ function detectarAtrapado(){
     }
 
     if (puntaje == 3) {
-        velocidadCaida = 150;
-    } else if (puntaje == 6) {
-        velocidadCaida = 100;
-    } else if (puntaje == 10) {
-        alert("GANASTE");
-        clearInterval(intervalo);
-    }
+            velocidadCaida = 150;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } else if (puntaje == 6) {
+            velocidadCaida = 100;
+            clearInterval(intervalo);
+            intervalo = setInterval(bajarLimon, velocidadCaida);
+        } else if (puntaje == 10) {
+            alert("GANASTE");
+            clearInterval(intervalo);
+        }
 }
 
 function detectarPiso(){
@@ -93,8 +107,8 @@ function detectarPiso(){
         mostrarSpan("txtVidas",vidas);
     }
     if (vidas == 0) {
-    alert("GAME OVER");
-    clearInterval(intervalo);
+        alert("GAME OVER");
+        clearInterval(intervalo);
     }
 }
 
