@@ -72,6 +72,10 @@ function detectarAtrapado(){
         puntaje=puntaje+1;
         mostrarSpan("txtPuntaje", puntaje);
     }
+
+    if (puntaje == 3) velocidadCaida = 150;
+    if (puntaje == 6) velocidadCaida = 100;
+    if (puntaje == 10) alert("GANASTE");
 }
 
 function detectarPiso(){
