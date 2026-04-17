@@ -9,8 +9,12 @@ let personajeX=canvas.width/2;
 let personajeY=canvas.height-(ALTURA_SUELO+ALTURA_PERSONAJE);
 let limonX=canvas.width/2;
 let limonY=5;
+let puntaje=0;
+let vidas=3;
+let velocidadCaida=200;
 
 function iniciar(){ 
+    setInterval(bajarLimon,velocidadCaida) //Primer parametro funcion y segundo milisegundos
     actualizarPantalla();
     aparecerLimon();
 }
@@ -54,17 +58,31 @@ function dibujarLimon(){
 function bajarLimon(){
     limonY = limonY + 10;
     actualizarPantalla();
-    detectarColision();
+    detectarAtrapado();
+    detectarPiso();
 }
 
-function detectarColision(){
+function detectarAtrapado(){
     if(limonX+ANCHO_LIMON >personajeX && 
         limonX<personajeX+ANCHO_PERSONAJE &&
         limonY+ALTO_LIMON>personajeY &&
         limonY<personajeY+ALTURA_PERSONAJE){
 
         aparecerLimon();
+        puntaje=puntaje+1;
+        mostrarSpan("txtPuntaje", puntaje);
     }
+}
+
+function detectarPiso(){
+    if(limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
+        aparecerLimon();
+        vidas=vidas-1;
+        mostrarSpan("txtVidas",vidas);
+    }
+    if (vidas == 0) {
+    alert("GAME OVER");
+}
 }
 
 function aparecerLimon(){
