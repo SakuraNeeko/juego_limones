@@ -90,3 +90,13 @@ canvas:hover {
   color: var(--neon-yellow) !important;
   text-shadow: 0 0 5px rgba(253, 224, 71, 0.3);
 }
+
+/* Agregar al final de tu limones.css */
+.drop-shadow {
+  filter: drop-shadow(0 0 10px rgba(253, 224, 71, 0.4)); /* Resplandor amarillo */
+  transition: filter 0.3s ease;
+}
+
+.drop-shadow:hover {
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6)); /* Cambia a cyan al pasar el mouse */
+}
